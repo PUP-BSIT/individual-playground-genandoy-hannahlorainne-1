@@ -1,15 +1,17 @@
 import { Component, signal } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [FormsModule],
-  template: `
-    <h1>Hello {{ username() }}</h1>
-    <input [(ngModel)]="username()" />
-  `
+  imports: [TitleCasePipe],
+  templateUrl: './app.html',
+  styleUrls: ['./app.sass'] 
 })
-export class AppComponent {
-  username = signal('Hannah Lorainne');
+export class App {
+  colors = signal<string[]>([]);
+
+  addColor(color: string) {
+    this.colors.set([...this.colors(), color]);
+  }
 }

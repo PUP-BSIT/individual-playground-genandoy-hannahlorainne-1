@@ -1,2 +1,14 @@
-<h1>Welcome {{ username() }}</h1>
-<input [(ngModel)]="username" />
+<button (click)="addColor('red')">Add Red</button>
+<button (click)="addColor('green')">Add Green</button>
+<button (click)="addColor('blue')">Add Blue</button>
+
+<div style="margin-top: 15px;">
+  @for (c of colors(); track $index) {
+    <ul>
+      <li [style.background-color]="c"
+          style="color: rgb(0, 0, 0);">
+        {{ c | titlecase }}
+      </li>
+    </ul>
+  }
+</div>
